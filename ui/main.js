@@ -16,10 +16,10 @@ button.onclick = function() {
             }
         }
         //not done yet
-    }
+    };
     
     //Make the request
     request.open('GET','http://akashraj11.imad.hasura-app.io/counter',true);
     reuest.send(null);
     
-}
+};
