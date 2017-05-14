@@ -51,9 +51,10 @@ submit.onclick = function() {
         }
         //not done yet
     };
+
+    //Make the request
     var nameInput = document.getElementById('name');
     var name = nameInput.value;
-    //Make the request
     request.open('GET','http://akashraj11.imad.hasura-app.io/submit-name?name=' + name,true);
     request.send(null);
 
