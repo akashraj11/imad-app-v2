@@ -1,6 +1,7 @@
 //Counter code
 
 var button = document.getElementById('counter');
+window.onload = function () {
 button.onclick = function() {
     
     //Create a request Object
@@ -23,4 +24,5 @@ button.onclick = function() {
     request.open('GET','http://akashraj11.imad.hasura-app.io/counter',true);
     request.send(null);
     
+};
 };
