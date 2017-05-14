@@ -20,6 +20,6 @@ button.onclick = function() {
     
     //Make the request
     request.open('GET','http://akashraj11.imad.hasura-app.io/counter',true);
-    reuest.send(null);
+    request.send(null);
     
 };
