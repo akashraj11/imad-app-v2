@@ -8,7 +8,7 @@ var config = {
     database: 'postgres',
     host: 'localhost',
     port: '80',
-    password: process.env.DB_PASSWORD
+    password: 'db-akashraj11-25940'
 };
 
 var app = express();
