@@ -7,7 +7,7 @@ var config = {
     user : 'postgres',
     database: 'postgres',
     host: 'localhost',
-    port: '5432',
+    port: '80',
     password: process.env.DB_PASSWORD
 };
 
