@@ -133,7 +133,7 @@ app.get('/test-db', function (req, res) {
         if(err) {
             res.status(500).send(err.toString());
             } else {
-                res.send(JSON.stringify(result));
+                res.send(JSON.stringify(result.rows));
             }
         });
     });
@@ -156,11 +156,24 @@ app.get('/submit-name/', function (req, res) { //submit-name/?name=ar
 });
 
 
-app.get('/:articleName', function (req, res) {
+app.get('/article/:articleName', function (req, res) {
     //articleName == article-one
     //articles[articleName]= {} content object for article one
     var articleName = req.params.articleName;
-  res.send(createTemplate(articles[articleName]));
+    
+    pool.query("SELECT * from article WHERE title = '" + req.params.articleName + "'",function(err,result) {
+        if(err) {
+            res.status(500).send(err,toString());
+        } else {
+            if(result.rows.length === 0) {
+                res.status(404).send('Article Not Found');
+            } else {
+                var articleData = result.rows[0];
+                res.send(createTemplate(articles[articleName]));
+            }
+        }
+    });
+
 });
 
 
