@@ -61,7 +61,7 @@ request.send(null);
   
   
   
-  //submit name
+  //LOGIN
 
 var submit = document.getElementById('submit_btn1');
 submit.onclick = function() {
