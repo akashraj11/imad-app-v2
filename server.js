@@ -14,7 +14,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var articles={
+//var articles={
  'article-One' : {    
     title:'Article One! Akashraj',
     heading:'Article One',
@@ -107,7 +107,7 @@ function createTemplate(data){
                          ${heading}
                         </h3>
                         <div>
-                         ${date}
+                         ${date.toDateString()}
                         </div>
                         <div>
                          ${content}
@@ -161,7 +161,7 @@ app.get('/article/:articleName', function (req, res) {
     //articles[articleName]= {} content object for article one
     var articleName = req.params.articleName;
     
-    pool.query("SELECT * from article WHERE title = '" + req.params.articleName + "'",function(err,result) {
+    pool.query("SELECT * from article WHERE title = $1",[req.params.articleName],function(err,result) {
         if(err) {
             res.status(500).send(err,toString());
         } else {
