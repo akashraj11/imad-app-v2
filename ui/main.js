@@ -24,6 +24,7 @@ button.onclick = function() {
     request.send(null);
 };
 
+
 //submit name
 
 var submit = document.getElementById('submit_btn');
@@ -50,11 +51,51 @@ submit.onclick = function() {
         }
         //not done yet
     };
+    
+//Make the request
+var nameInput = document.getElementById('name');
+var name = nameInput.value;
+request.open('GET','http://akashraj11.imad.hasura-app.io/submit-name?name=' + name,true);
+request.send(null);
+};    
+  
+  
+  
+  //submit name
 
-    //Make the request
-    var nameInput = document.getElementById('name');
-    var name = nameInput.value;
-    request.open('GET','http://akashraj11.imad.hasura-app.io/submit-name?name=' + name,true);
-    request.send(null);
+var submit = document.getElementById('submit_btn1');
+submit.onclick = function() {
+    //Make a request to server and send this name
+        //Create a request Object
+    var request = new XMLHttpRequest();
+    
+    //Capture response and store it in variable
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            //take action
+            if( request.status === 200) {
+                //Capture a list of names and render it as a list
+                console.log('User Logged in');
+                alert('Logged in Sucessfully');
+            }else if(request.status ===403){
+                alert('Username/Password Incorrect');
+            }else if(request.status ===500){
+                alert('Something Went Wrong On Server');
+            }
+            
+        }
+        //not done yet
+    };
+  
+//Make the request
+var username = document.getElementById('username').value;
+var password = document.getElementById('password').value;
+request.open('POST','http://akashraj11.imad.hasura-app.io/login' + name,true);
+request.setRequestHeader('content-Type','application/json');
+request.send(JSON.stringify({username: username, password: password}));
+};      
+  
+  
+    
 
-};
+
